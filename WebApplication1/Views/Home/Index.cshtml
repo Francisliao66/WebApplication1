@@ -1,0 +1,115 @@
+﻿@*@model IEnumerable<WebApplication1.Models.OrderModel>*@
+@model WebApplication1.ViewModel.HomeViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <br />
+    <div class="row">
+        <div class="col col-lg-3">
+            <input type="text" name="Order" class="form-control" placeholder="(訂單號碼、料號)" ,="" autofocus="autofocus" />
+        </div>
+        <div class="col col-lg-2">
+            <button type="submit" class="btn btn-success">查詢</button>
+        </div>
+    </div>
+    <br />
+}
+
+
+@if (ViewBag.test > 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventory_QTY)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.ALL_DATA)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inventory_QTY)
+                </td>
+                <td>
+                    @Html.ActionLink("新增訂單", "InsertOrder", new { Id = item.Id }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("新增訂單庫存", "InsertInvQTY", new { Id = item.Id }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+    </table>
+}
+else if (ViewBag.number > 0)
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QTY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventory_QTY)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.ALL_DATA)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QTY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inventory_QTY)
+                </td>
+                <td>
+                    @Html.ActionLink("新增訂單", "InsertOrder", new { Id = item.Id }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("新增訂單庫存", "InsertInvQTY", new { Id = item.Id }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderNume)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QTY)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventory_QTY)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.ALL_DATA)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderNume)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QTY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inventory_QTY)
+                </td>
+                <td>
+                    @Html.ActionLink("新增訂單", "InsertOrder", new { Id = item.Id }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("新增訂單庫存", "InsertInvQTY", new { Id = item.Id }, new { @class = "btn btn-info" })
+                </td>
+            </tr>
+        }
+    </table>
+}
