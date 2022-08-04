@@ -21,11 +21,13 @@ namespace WebApplication1.Controllers
         //public string Get(int id)
         public string Get(OrderModel model)
         {
-            SqlDataAccess db = new SqlDataAccess();
-            List<OrderModel> DATA = db.OrderDATA();
-            DATA.Where(s => s.OrderNume == model.Order || s.ItemNo == model.Order).ToList();
+            //SqlDataAccess db = new SqlDataAccess();
+            //List<OrderModel> DATA = db.OrderDATA();
+            //DATA.Where(s => s.OrderNume == model.Order || s.ItemNo == model.Order).ToList();
 
-            return DATA + "";
+            //return DATA + "";
+
+            return "test";
         }
 
         // POST api/values _ 新增

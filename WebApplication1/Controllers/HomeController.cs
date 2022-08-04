@@ -14,7 +14,7 @@ namespace WebApplication1.Controllers
         SqlDataAccess db = new SqlDataAccess();
         public ActionResult Index(OrderModel models,string Order,int? id)
         {
-            ValuesController api = new ValuesController();
+            //ValuesController api = new ValuesController();
             List<OrderModel> alldata = db.OrderDATA();
 
             HomeViewModel model = new HomeViewModel()
